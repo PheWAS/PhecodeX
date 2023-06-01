@@ -2,17 +2,19 @@ library(PheWAS)
 set.seed(1)
  
 ## make sure you add the right path!
-phecodeX_info = read.csv('phecodeX_R_info.csv')
-phecodeX_rollup_map = read.csv('R_phecodeX_rollup_map.csv')
-phecodeX_map = read.csv('R_phecodeX_map.csv')
-phecodeX_sex = read.csv('phecodeX_sex.csv')
+phecodeX_labels = read.csv('phecodeX_R_labels.csv')
+phecodeX_rollup_map = read.csv('phecodeX_R_rollup_map.csv')
+phecodeX_map = read.csv('phecodeX_R_map.csv')
+phecodeX_sex = read.csv('phecodeX_R_sex.csv')
  
 #Generate some example data
 ex=generateExample()
+
 #Extract the three parts from the returned list
 id.vocab.code.count=ex$id.vocab.code.count
 genotypes=ex$genotypes
 id.sex=ex$id.sex
+
 #Create the phecode table- translates the codes, adds
 #exclusions, and reshapes to a wide format.
 #Sum up the counts in the data where applicable.
@@ -27,7 +29,14 @@ phenotypesX = createPhenotypes(id.vocab.code.count,
 data = inner_join(inner_join(phenotypesX,genotypes),id.sex)
  
 #Run the PheWAS
-results=phewas_ext(data,phenotypes=names(phenotypesX)[-1], genotypes=c("rsEXAMPLE"), covariates=c("sex"))
+results = phewas_ext(data,phenotypes=names(phenotypesX)[-1], genotypes=c("rsEXAMPLE"), covariates=c("sex"))
  
-## add phecode_labels
-results_annotated = merge(phecodeX_info, results, by='phenotype')
+## Add phecode_labels
+results_annotated = merge(phecodeX_labels, results, by='phenotype')
+
+## Make a plot
+phenotypeManhattan(results_annotated, 
+                   title="My Example PheWAS Manhattan Plot",
+                   annotate.phenotype.description=T,
+                   sort.by.category.value=F, x.group.labels=T,
+                   use.color=T)
