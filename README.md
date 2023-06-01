@@ -7,38 +7,30 @@ The PhecodeX repository contains data files relevant to the updated phecode nome
 ### phecodeX_PheWAS_example_R_script.txt ###
 Example script for running the new PhecodeX data files with the original PheWAS R package.
 
-### phecodeX_info.csv ###
+### phecodeX_R_labels.csv ###
 This file includes information related to each phecode, including the phecode string, category, and columns indicating sex-specificity and ICD-10 only status. The columns are as follows:
 
-        phecode             The phecode label (two letters, “_”, and numeric phecode)
-        phecode_string      A descriptive label for phecode
-        category_num        A numeric value corresponding to the phecode category
-        category            A string indicating the phecode category
-        sex                 A string with values “Both”,”Female” or “Male.” Sex-specific phecodes (e.g. Prostate cancer) are labeled by accordingly.
+        phenotype           The phecode label (two letters, “_”, and numeric phecode)
+        description         A descriptive label for phecode
         icd10_only          A Boolean value: 1 if the phecode is defined only by ICD-10 codes; 0 if the phecode is defined by both ICD-9 and -10 codes
-        leaf                A Boolean value: 1 if the phecode has no children; 0 if the phecode has one or more children
-        phecode_num         The unique numeric component of the phecode label. Can be useful for sorting
+        groupnum            A numeric value corresponding to the phecode category
+        group               A string indicating the phecode category
+        color               A string value indicating the color to use in plots for each group
 
-### phecodeX_unfolled.csv ###
+### phecodeX_R_map.csv ###
 This file includes the ICD-9 and -10 codes that define each phecodes. All codes are “unrolled” meaning that phecode ID_002.1 implies ID_002. The columns are as follows:
 
+        code                  The code included in the phecode grouping (current supported code types are ICD-9-CM and ICD-10-CM)
+        vocabulary_id         A string indicating the code type (ICD9CM or ICD10CM)
         phecode               The phecode label
-        ICD                   The ICD code included in the phecode grouping
-        flag                  A numeric value 9 or 10 indicating the ICD code is ICD-9 or ICD-10
+        
+### phecodeX_R_rollup_map.csv ###
+This file defines the phecode structure. Phecodes with decimals are "rolled up" to parent codes, such that every individual with code BI_160.11 also has BI_160.1 and BI_160.
 
-### phecodeX_ICD_map_flat.csv ###
-A highly descriptive file that includes both phecode strings and ICD descriptions. This file is “flat” (i.e. not “unrolled”) such that child codes are not mapped to parents. This file is useful for examining which ICDs that inform a particular phecode. The columns are as follows:
+        code               Primary phecode label
+        phecode_unrolled   A phecode that is implied by the primary phecode label
 
-        phecode               The phecode label
-        phecode_string        A descriptive label for phecode
-        category_num          A numeric value corresponding to the phecode category
-        category              A string indicating the phecode category
-        ICD                   The ICD-9 or ICD-10 code
-        flag                  A numeric value 9 or 10 indicating the ICD code is ICD-9 or ICD-10
-        ICD_string            The string description of the ICD code
-        ICD_chapter           The chapter of the ICD code
-
-### phecodeX_sex.csv ###
+### phecodeX_R_sex.csv ###
 A descriptive file designed to indicate if a specific phecode is indicative of a sex specific code based on (>90% of codes use associated with EHR-reported female/male only). The columns are as follows:
 
         phecode               The phecode label
