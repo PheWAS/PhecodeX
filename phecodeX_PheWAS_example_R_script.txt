@@ -4,7 +4,7 @@ set.seed(1)
 ## make sure you add the right path!
 phecodeX_labels = read.csv('phecodeX_R_labels.csv')
 phecodeX_rollup_map = read.csv('phecodeX_R_rollup_map.csv')
-phecodeX_map = read.csv('phecodeX_R_map.csv')
+phecodeX_map = read.csv('phecodeX_R_map.csv') ## if you are using ICD-10 (not CM), load phecodeX_R_map_ICD_10_WHO.csv instead
 phecodeX_sex = read.csv('phecodeX_R_sex.csv')
  
 #Generate some example data
