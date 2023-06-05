@@ -1,12 +1,12 @@
 library(PheWAS)
 set.seed(1)
- 
+
 ## make sure you add the right path!
 phecodeX_labels = read.csv('phecodeX_R_labels.csv')
 phecodeX_rollup_map = read.csv('phecodeX_R_rollup_map.csv')
 phecodeX_map = read.csv('phecodeX_R_map.csv')
 phecodeX_sex = read.csv('phecodeX_R_sex.csv')
- 
+
 #Generate some example data
 ex=generateExample()
 
@@ -21,16 +21,17 @@ id.sex=ex$id.sex
 #Note the vocabulary.map and rollup.map are set to
 #phecodeX files
 phenotypesX = createPhenotypes(id.vocab.code.count,
-                            aggregate.fun=sum, id.sex=id.sex,
-                            vocabulary.map=phecodeX_map,
-                            rollup.map=phecodeX_rollup_map, sex.restriction=phecodeX_sex)
- 
+                               aggregate.fun=sum, id.sex=id.sex,
+                               vocabulary.map=phecodeX_map,
+                               rollup.map=phecodeX_rollup_map, 
+                               sex.restriction=phecodeX_sex)
+
 #Combine the data
 data = inner_join(inner_join(phenotypesX,genotypes),id.sex)
- 
+
 #Run the PheWAS
 results = phewas_ext(data,phenotypes=names(phenotypesX)[-1], genotypes=c("rsEXAMPLE"), covariates=c("sex"))
- 
+
 ## Add phecode_labels
 results_annotated = merge(phecodeX_labels, results, by='phenotype')
 
