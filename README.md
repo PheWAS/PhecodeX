@@ -1,6 +1,6 @@
-# PhecodeX
+# phecodeX
 
-The PhecodeX repository contains data files relevant to the updated phecode nomenclature. A brief description of the particular files are listed below. These data components are designed to work with the original PheWAS R package and the relevant text for using these datafiles with this package are described in phecodeX_PheWAS_example_R_script.txt
+The phecodeX repository contains data files relevant to the updated phecode nomenclature. A brief description of the particular files are listed below. These data components are designed to work with the original PheWAS R package and the relevant text for using these datafiles with this package are described in phecodeX_PheWAS_example_R_script.txt
 
 # Data file components included in this package include: 
 
