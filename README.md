@@ -18,7 +18,7 @@ This file includes information related to each phecode, including the phecode st
         color               A string value indicating the color to use in plots for each group
 
 ### phecodeX_R_map.csv ###
-This file includes the ICD-9 and -10 codes that define each phecodes. All codes are “unrolled” meaning that phecode ID_002.1 implies ID_002. The columns are as follows:
+This file includes the ICD-9 and -10 codes that define each phecodes. This mapping is "flat" in that the phecodes are not "unrolled." The columns are as follows:
 
         code                  The code included in the phecode grouping (current supported code types are ICD-9-CM and ICD-10-CM)
         vocabulary_id         A string indicating the code type (ICD9CM or ICD10CM)
