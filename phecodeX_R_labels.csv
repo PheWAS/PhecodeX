@@ -305,7 +305,7 @@
 "CA_125","Other malignant neoplasms of lymphoid, hematopoietic and related tissue",0,2,"Neoplasms","#FFA500"
 "CA_125.1","Cutaneous mastocytosis*",1,2,"Neoplasms","#FFA500"
 "CA_128","Estrogen receptor status",0,2,"Neoplasms","#FFA500"
-"CA_128.1","Estrogen receptor postitive status [ER+]",0,2,"Neoplasms","#FFA500"
+"CA_128.1","Estrogen receptor positive status [ER+]",0,2,"Neoplasms","#FFA500"
 "CA_128.2","Estrogen receptor negative status [ER-]",0,2,"Neoplasms","#FFA500"
 "CA_130","Cancer (solid tumor, excluding BCC)",0,2,"Neoplasms","#FFA500"
 "CA_132","Sequelae of cancer",0,2,"Neoplasms","#FFA500"
